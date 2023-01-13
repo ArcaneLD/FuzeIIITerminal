@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+<link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+    <template id="greetings">
+        _______________ ________________________    .___.___.___ 
+        \_   _____/    |   \____    /\_   _____/    |   |   |   |
+        |    __) |    |   / /     /  |    __)_      |   |   |   |
+        |     \  |    |  / /     /_  |        \     |   |   |   |
+        \___  /  |______/ /_______ \/_______  /     |___|___|___|
+            \/                    \/        \/                
+    </template>
+
+    <script>
+
+        function sleep(ms) {
+            return new Promise(
+             resolve => setTimeout(resolve, ms)
+            );
+        }
+        function addButton(text) {
+            document.querySelector(".terminal-output").innerHTML += "<button>" + text + "</button>"
+        }
+
+        function getRandomInt(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        $('body').terminal({
+        colora: function(color) {
+            $(':root').css("--color", color)
+            this.echo('Couleur Modifiée');
+        },
+        help: function() {
+            this.echo("Bien Le bonsoir Julien, Je suis Axiome l'IA personelle de Monsieur /~_§*. Obtiens les infos dont tu as besoin à travers ces quelques commandes ici 🔰 :");
+            this.echo("                                               ");
+            this.echo(" ______________________________________________");
+            this.echo(" |                Menu d'Aide                 |");
+            this.echo(" ______________________________________________");
+            this.echo(" | - fuzeshop                      - cheveux  |");
+            this.echo(" | - quoi                                     |");
+            this.echo(" | - colora <color>                           |");
+            this.echo(" | - cat                             - dog    |");
+            this.echo(" ----------------------------------------------");
+        },
+        fuzeshop: function() {
+            this.echo("pour des suuuuper peluches fuzeshop.fr");
+        },
+        cheveux: function() {
+            this.echo("Il s'est enfin coupé les cheveux, incroyable");
+        },
+        quoi: function() {
+            this.echo("Feur");
+        },
+        cat: function() {
+            heigth = getRandomInt(360, 520);
+            width = getRandomInt(360, 520);
+            img = '<img src="https://placekitten.com/' + Math.round(heigth) + '/' + Math.round(width) + '">';
+            this.echo("Moooooh ❤");
+            this.echo($(img));
+        },
+        dog: function() {
+            heigth = getRandomInt(360, 520);
+            width = getRandomInt(360, 520);
+            img = '<img src="https://placedog.net/' + Math.round(heigth) + '/' + Math.round(width) + '">';
+            this.echo("Double Moooooh ❤");
+            this.echo($(img));
+        }
+        }, {
+            greetings: greetings.innerHTML
+        }); 
+    </script>
+</body>
+</html>
